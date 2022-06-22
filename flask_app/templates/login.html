@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Login and Register</title>
+        <!-- load Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <!-- Optional JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    </head>
+<body>
+    <h3>Register a New Account</h3>
+    <form action="/account/new" method="POST">
+        <label for='first_name'>First Name:</label>
+        <input type='text' name='first_name'>
+        {% for message in get_flashed_messages(category_filter=["error_register_first_name"]): %}
+            {{message}}
+        {% endfor %}
+        <label for='last_name'>Last Name:</label>
+        <input type='text' name='last_name'>
+        {% for message in get_flashed_messages(category_filter=["error_register_last_name"]): %}
+            {{message}}
+        {% endfor %}
+        <label for='email'> email:</label>
+        <input type='text' name='email'>
+        {% for message in get_flashed_messages(category_filter=["error_register_email"]): %}
+            {{message}}
+        {% endfor %}
+        <label for='email_confirm'> confirm email:</label>
+        <input type='text' name='email_confirm'>
+        {% for message in get_flashed_messages(category_filter=["error_register_email_confirm"]): %}
+            {{message}}
+        {% endfor %}
+        <label for="user_pass">password:</label>
+        <input type="password" name="user_pass">
+        {% for message in get_flashed_messages(category_filter=["error_register_password"]): %}
+            {{message}}
+        {% endfor %}
+        <label for="confirm_pass">confirm password:</label>
+        <input type="password" name="confirm_pass">
+        {% for message in get_flashed_messages(category_filter=["error_register_password_confirm"]): %}
+            {{message}}
+        {% endfor %}
+        <button type="submit">Create Account</button>
+    </form>
+    <h3>Log in With an Existing Account</h3>
+    <form action="/login" method="POST">
+        <label for='email'> email:</label>
+        <input type='text' name='email'>
+        {% for message in get_flashed_messages(category_filter=["error_email"]): %}
+            {{message}}
+        {% endfor %}
+        <label for="user_pass">password:</label>
+        <input type="password" name="user_pass">
+        {% for message in get_flashed_messages(category_filter=["error_password"]): %}
+            {{message}}
+        {% endfor %}
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>
